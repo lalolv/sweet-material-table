@@ -1,8 +1,9 @@
 {
   "name": "sweet-material-table",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "authors": [
-    "Patrick de Lanauze <patrick.delanauze@gmail.com>"
+    "Patrick de Lanauze <patrick.delanauze@gmail.com>",
+    "Lalo <code@lalo.im"
   ],
   "description": "Polymer material data tables implementation",
   "keywords": [
@@ -10,7 +11,7 @@
     "web-components"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/pdelanauze/sweet-material-table",
+  "homepage": "https://github.com/lalolv/sweet-material-table",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -19,7 +20,7 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "#1.0.6",
+    "polymer": "#^1.0.0",
     "paper-checkbox": "PolymerElements/paper-checkbox#^1.0.0",
     "paper-material": "PolymerElements/paper-material#^1.0.0",
     "paper-menu": "PolymerElements/paper-menu#^1.0.0",
