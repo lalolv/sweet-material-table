@@ -33,6 +33,11 @@ paper-material {
   padding-right: 56px;
 }
 
+#table .thead .tr .th > span {
+    font-size: 12pt;
+    font-weight: bolder;
+}
+
 #table .thead .tr .th:first-of-type,
 #table .tbody .tr .td:first-of-type {
   padding-left: 24px;
