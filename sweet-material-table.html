@@ -84,7 +84,7 @@
               <paper-checkbox id="selectAll" on-click="_selectAll"></paper-checkbox>
             </div>
             <template is="dom-repeat" items="{{columns}}" as="column">
-              <div class="th flex" data-column$="[[column.key]]" on-click="_sortColumn">
+              <div class="th" style$="[[_setWidthValue(column.width)]]" data-column$="[[column.key]]" on-click="_sortColumn">
 
                 <iron-icon class="sorted-descending"
                            icon="icons:arrow-drop-down"></iron-icon>
@@ -113,7 +113,7 @@
 
                 <template is="dom-repeat" items="{{columns}}" as="column">
 
-                  <div class="flex td">
+                  <div class="td" style$="[[_setWidthValue(column.width)]]">
                     <sweet-material-table-item class="flex"
                                              field="[[column]]"
                                              data-column$="[[column.key]]"
@@ -447,6 +447,10 @@
 
         var actionName = e.currentTarget.action;
         this.fire('action', actionName);
+    },
+
+      _setWidthValue: function (w) {
+          return 'width: ' + w;
       }
 
     })
