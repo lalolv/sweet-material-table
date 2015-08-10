@@ -128,11 +128,19 @@
       </div>
 
       <div id="tableFooter" class="end-justified" style="text-align: right;">
+        <!-- page infos -->
+        <span id="paginationStatus" class="flex">
+          <span>[[start]]</span>
+          <span>-</span>
+          <span>[[_getEndValue(start,perPage)]]</span>
+          <span> of </span>
+          <span>[[total]]</span>
+        </span>
         <span id="previousPage" class="flex" on-tap="_previousPageClicked">
-          <iron-icon icon="icons:chevron-left"></iron-icon>
+            <iron-icon icon="icons:chevron-left"></iron-icon>
         </span>
         <span id="nextPage" class="flex" on-tap="_nextPageClicked">
-          <iron-icon icon="icons:chevron-right"></iron-icon>
+            <iron-icon icon="icons:chevron-right"></iron-icon>
         </span>
       </div>
 
