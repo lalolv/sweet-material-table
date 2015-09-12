@@ -95,6 +95,11 @@
                 <span>[[column.title]]</span>
               </div>
             </template>
+
+            <template is="dom-if" if="[[singleActions.length]]">
+              <div class="flex th actions">&nbsp;</div>
+            </template>
+
           </div>
         </div>
         <div class="tbody" id="tbody">
@@ -120,6 +125,24 @@
                                              row="{{instance}}"></sweet-material-table-item>
                   </div>
                 </template>
+
+                <template is="dom-if" if="[[singleActions.length]]">
+                <div class="flex td actions">
+                  <paper-menu-button>
+                    <paper-icon-button icon="icons:more-vert" class="dropdown-trigger"></paper-icon-button>
+                    <paper-menu class="dropdown-content">
+                      <template is="dom-repeat" items="[[singleActions]]" as="action" index-as="actionIndex">
+                        <paper-item index="[[index]]"
+                                    action="[[action.name]]"
+                                    on-click="_singleActionClicked">
+                          <span>[[action.title]]</span>
+                        </paper-item>
+                      </template>
+                    </paper-menu>
+                  </paper-menu-button>
+                </div>
+              </template>
+
               </div>
             </template>
           </template>
@@ -212,6 +235,12 @@
         selectedIndexes: {
           type: Array,
           notify: true,
+          value: function () {
+            return [];
+          }
+        },
+        singleActions: {
+          type: Array,
           value: function () {
             return [];
           }
@@ -453,8 +482,22 @@
 
       _actionClicked: function (e) {
 
+        // var actionName = e.currentTarget.action;
+        // this.fire('action', actionName);
+
         var actionName = e.currentTarget.action;
-        this.fire('action', actionName);
+        this.fire('action', {
+          name: actionName,
+          indexes: this.selectedIndexes
+        });
+    },
+
+    _singleActionClicked: function (e) {
+        var actionName = e.currentTarget.action;
+        this.fire('single-action', {
+          name: actionName,
+          index: e.currentTarget.index
+        });
     },
 
       _setWidthValue: function (w) {
