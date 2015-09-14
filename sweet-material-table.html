@@ -509,9 +509,14 @@
         });
     },
 
-      _setWidthValue: function (w) {
-          return 'width: ' + w;
-      }
+    _setWidthValue: function (w) {
+      return 'width: ' + w;
+    },
+
+    clearAllSelected: function() {
+      // remove selected
+      this.splice('selectedIndexes', 0, this.data.length);
+    }
 
     })
   </script>
