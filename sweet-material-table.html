@@ -80,9 +80,11 @@
       <div id="table">
         <div class="thead">
           <div class="tr horizontal layout">
-            <div class="th checkbox">
-              <paper-checkbox id="selectAll" on-click="_selectAll"></paper-checkbox>
-            </div>
+              <template is="dom-if" if="[[showChecks]]">
+                <div class="th checkbox">
+                  <paper-checkbox id="selectAll" on-click="_selectAll"></paper-checkbox>
+                </div>
+              </template>
             <template is="dom-repeat" items="{{columns}}" as="column">
               <div class="th" style$="[[_setWidthValue(column.width)]]" data-column$="[[column.key]]" on-click="_sortColumn">
 
@@ -111,14 +113,16 @@
           <template is="dom-if" if="[[!customTbodyContent]]">
             <template is="dom-repeat" items="{{data}}" as="instance">
 
-              <div class="tr horizontal layout" index="[[index]]">
-                <div class="td checkbox">
-                  <paper-checkbox on-click="_selectRow" index="[[index]]"></paper-checkbox>
-                </div>
+              <div class="tr horizontal layout center-center" index="[[index]]">
+                <template is="dom-if" if="[[showChecks]]">
+                  <div class="td checkbox">
+                    <paper-checkbox on-click="_selectRow" index="[[index]]"></paper-checkbox>
+                  </div>
+                </template>
 
                 <template is="dom-repeat" items="{{columns}}" as="column">
 
-                  <div class="td" style$="[[_setWidthValue(column.width)]]">
+                  <div class="td horizontal layout center-center" style$="[[_setWidthValue(column.width)]]">
                     <sweet-material-table-item class="flex"
                                              field="[[column]]"
                                              data-column$="[[column.key]]"
@@ -209,6 +213,10 @@
           value: function () {
             return [];
           }
+        },
+        showChecks: {
+            type: Boolean,
+            value: false
         },
         perPage: {
           type: Number,
@@ -470,8 +478,9 @@
           rows[this.selectedIndexes[i]].classList.add('selected');
         }
 
-        this.$.selectAll.checked = (this.selectedIndexes && this.data && selectedIndexesLength === this.data.length);
-
+        if (this.showChecks && this.$.selectAll) {
+          this.$.selectAll.checked = (this.selectedIndexes && this.data && selectedIndexesLength === this.data.length);
+        }
         if (selectedIndexesLength) {
           this.$.tableHeader.classList.add('alternate-header');
           this.alternateHeaderTitle = selectedIndexesLength + ' row' + (selectedIndexesLength === 1 ? '' : 's') + ' selected';

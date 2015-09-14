@@ -30,7 +30,7 @@ paper-material {
 
 #table .thead .tr .th,
 #table .tbody .tr .td {
-  padding-right: 56px;
+  padding-right: 10px;
 }
 
 #table .thead .tr .th > span {
@@ -252,7 +252,7 @@ paper-material {
 
 #table .tbody .tr .td,
 #table .tbody .tr .td-host::shadow .td {
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(0, 0, 0, .87);
-  line-height: 13px;
+  /*line-height: 13px;*/
 }
